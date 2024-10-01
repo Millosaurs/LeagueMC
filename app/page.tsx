@@ -19,7 +19,7 @@ import kraken from '../imgs/kraken.png'
 import demigod from '../imgs/demigod.png'
 import warlord from '../imgs/warlord.png'
 import gladiator from '../imgs/gladiator.png'
-import sotwVault from '../imgs/crate.png'
+import sotwVault from '../imgs/Crate.png'
 import goldenVault from '../imgs/Golden.png'
 import { Inter } from 'next/font/google'
 
