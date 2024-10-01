@@ -19,7 +19,7 @@ import kraken from '../imgs/kraken.png'
 import demigod from '../imgs/demigod.png'
 import warlord from '../imgs/warlord.png'
 import gladiator from '../imgs/gladiator.png'
-import sotwVault from '../imgs/Crate.png'
+import sotwVault from '../imgs/crate.png'
 import goldenVault from '../imgs/Golden.png'
 import { Inter } from 'next/font/google'
 
@@ -47,8 +47,10 @@ const items: Item[] = [
 export default function Component() {
   const [cart, setCart] = useState<Item[]>([])
   const [darkMode, setDarkMode] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     if (darkMode) {
       document.documentElement.classList.add('dark')
     } else {
@@ -90,9 +92,12 @@ Total: ${totalPrice.toLocaleString()} Crystals
     URL.revokeObjectURL(url)
   }
 
+  if (!mounted) {
+    return null
+  }
+
   return (
     <div className={`${inter.className} min-h-screen transition-colors duration-300 ${darkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>
-      <time dateTime="2016-10-25" suppressHydrationWarning />
       <nav className={`transition-colors duration-300 ${darkMode ? 'bg-black border-white' : 'bg-white border-black'} p-4 rounded-lg shadow-lg mx-4 mt-4 border-2`}>
         <div className="container mx-auto flex justify-between items-center">
           <h1 className={`text-2xl font-bold transition-colors duration-300 ${darkMode ? 'text-white' : 'text-black'}`}>LeagueMC</h1>
@@ -209,9 +214,13 @@ Total: ${totalPrice.toLocaleString()} Crystals
           ))}
         </div>
       </div>
+      <div className="text-center py-4">
+        <p className={`text-sm opacity-50 transition-colors duration-300 ${darkMode ? 'text-white' : 'text-black'}`}>
+          Made by millo for LeagueMC :D
+        </p>
+      </div>
     </div>
   )
 }
-
 
 // MADE BY Mlllosaurs  aka SHARAN SHRIVASTAV 
